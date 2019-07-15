@@ -1,0 +1,37 @@
+.wrap {
+	overflow: hidden;
+	height: 50px;
+	line-height: 25px;
+}
+
+.wrap .main {
+	float: right;
+	margin-left: -5px;
+	width: 100%;
+	word-break: break-all;
+}
+
+.wrap::before {
+	content: '';
+	float: left;
+	width: 5px;
+	height: 50px;
+}
+
+.wrap::after {
+	content: "...";
+	float: right;
+	position: relative;
+	left: 100%;
+	top: -25px;
+	margin-left: -2em;
+	padding-right: 5px;
+	height: 25px;
+	width: 2em;
+	text-align: right;
+	background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)));
+	background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 50%);
+	background: -o-linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 50%);
+	background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 50%);
+	background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 50%);
+}
