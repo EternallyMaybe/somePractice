@@ -1,7 +1,10 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
 .main {
-    margin: 20px;
+    margin: 1rem;
     border: 1px solid #000;
-    width: 200px;
-    height: 200px;
-    font-size: 16px;    
+    font-size: 0.4rem;    
 }
