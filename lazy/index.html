@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>懒加载</title>
+    <style>
+        html, 
+        body {
+            margin: 0;
+            height: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .content {
+            width: 100%;
+            height: 100%;
+            background: blue;
+        }
+        .lazy-el {
+            width: 100%;
+            height: 100px;
+            background: red;
+        }
+        .lazy-el img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content"></div>
+    <div class="lazy-el">
+        <img src="default.png" data-src="real.png"/>
+        <img src="default.png" data-src="real.png"/>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>
