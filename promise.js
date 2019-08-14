@@ -149,6 +149,100 @@ MyPromise.prototype.then = function(onResolved, onRejected) {
     return promise2;
 }
 
+MyPromise.prototype.finally = function(cb) {
+    return this.then(
+        val => Promise.resolve(cb()).then(() => val),
+        err => Promise.resolve(cb()).then(() => { throw err })
+    )
+}
+
+MyPromise.all = function(arr) {
+    const newArr = Array.from(arr);
+    const result = [];
+    let count = 0;
+    return new Promise((resolve, reject) => {
+        for (let i = 0; i < newArr.length; i++) {
+            Promise.resolve(newArr[i])
+                .then(data => {
+                    result[i] = data;
+                    if (++count === newArr.length) resolve(result);
+                }, reject);
+        }
+    });
+}
+
+MyPromise.race = function(arr) {
+    const newArr = Array.from(arr);
+    return new Promise((resolve, reject) => {
+        for (let i = 0; i < newArr.length; i++) {
+            Promise.resolve(newArr[i])
+                .then(resolve, reject);
+        }
+    });
+}
+
+MyPromise.allSettled = function(arr) {
+    const newArr = Array.from(arr);
+    const result = [];
+    let count = 0;
+    return new Promise((resolve, reject) => {
+        for (let i = 0; i < newArr.length; i++) {
+            Promise.resolve(newArr[i])
+                .then(data => {
+                    result[i] = { status: 'fulfilled', value: data };
+                }, err => {
+                    result[i] = { status: 'rejected', reason: err };
+                })
+                .then(() => {
+                    if (++count === newArr.length) resolve(result);
+                });
+        }
+    });
+}
+
+MyPromise.any = function(arr) {
+    const newArr = Array.from(arr);
+    const errors = [];
+    let count = 0;
+    return new Promise((resolve, reject) => {
+        for (let i = 0; i < newArr.length; i++) {
+            Promise.resolve(newArr[i])
+                .then(resolve, err => {
+                    errors[i] = err;
+                    if (++count === newArr.length) reject(new AggregateError(errors));
+                });
+        }
+    });
+}
+
+MyPromise.resolve = function(data) {
+    if (data instanceof MyPromise) {
+        return data;
+    }
+    if (
+        data
+        && typeof data === 'object'
+        || typeof data === 'function'
+        && typeof data.then === 'function'
+    ) {
+        if (data.then) {
+            return new Promise((resolve, reject) => {
+                data.then(resolve, reject);
+            });
+        }
+    }
+
+    return new Promise(resolve => {
+        resolve(data);
+    })
+}
+
+MyPromise.reject = function(err) {
+    return new Promise((resolve, reject) => {
+        reject(err);
+    });
+}
+
 var promise1 = new MyPromise(function(resolve, reject) {
     setTimeout(function(){
         reject(123)
