@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum=1,minimum=1,user-scalable=no">
     <title>抽奖活动</title>
-    <link rel="preload" type="text/css" href="./index.css" />
+    <link rel="stylesheet" type="text/css" href="./index.css" />
 </head>
 <body>
-    <div class="lottery">
-        <div class="turntable">
-            <canvas id="turntablePlate"></canvas>
+    <div class="turntable">
+        <div class="plate">
+            <div class="plate-border"></div>
+            <canvas class="plate-detail"></canvas>
         </div>
-        <div class="arrow"></div>
+        <div class="pointer"></div>
     </div>
-    <div></div>
     <script src="./fontSize.js"></script>
     <script src="./zepto.min.js"></script>
     <script src="./index.js"></script>
