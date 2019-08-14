@@ -398,4 +398,4 @@ $('.plate').on('transitionend', function() {
 ![幸运大转盘](../turntable2/turntable.gif)
 
 ## 总结
-实现过程中有一些注意点，比如绘制图片需要等待加载完成这些问题，但总的来说，抽奖大转盘这两种方式都还是挺简单的，最后附上代码地址：
+实现过程中有一些注意点，比如绘制图片需要等待加载完成这些问题，但总的来说，抽奖大转盘这两种方式都还是挺简单的，最后附上代码地址：[https://github.com/EternallyMaybe/somePractice/tree/master/turntable2](https://github.com/EternallyMaybe/somePractice/tree/master/turntable2)
