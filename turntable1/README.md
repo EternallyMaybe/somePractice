@@ -138,7 +138,7 @@ $(function() {
 ![边框与指针](../turntable2/result1.jpg)
 
 ##### 2.绘制内容
-然后创建扇形,就是一个循环过程，代码简单，容易理解
+创建扇形,考虑到灵活性、后期扩展以及实现的简便性，这里使用canvas进行绘制。实现比较简单，主要是熟悉canvas的[API](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial)
 ```
 var data = [
     {
@@ -395,7 +395,7 @@ $('.plate').on('transitionend', function() {
 ```
 最后的效果：
 
-![幸运大转盘](../turntable2/turntable.gif)
+![抽奖大转盘](../turntable2/turntable.gif)
 
 ## 总结
 实现过程中有一些注意点，比如绘制图片需要等待加载完成这些问题，但总的来说，抽奖大转盘这两种方式都还是挺简单的，最后附上代码地址：[https://github.com/EternallyMaybe/somePractice/tree/master/turntable2](https://github.com/EternallyMaybe/somePractice/tree/master/turntable2)
